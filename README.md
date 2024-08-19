@@ -259,6 +259,370 @@ public class Main {
 
 ### 14. **Conclusion**
 
-Java est un langage riche et puissant, largement utilisé dans le développement d'applications de bureau, web, mobiles, et pour des systèmes embarqués. Les concepts présentés ici ne sont que la base ; il existe de nombreux autres aspects plus avancés de Java comme les expressions lambda, les flux (streams), la gestion des bases de données, etc.
+Java est un langage riche et puissant, largement utilisé dans le développement d'applications de bureau, web, mobiles, 
+et pour des systèmes embarqués. Les concepts présentés ici ne sont que la 
+base ; il existe de nombreux autres 
+aspects plus avancés de Java comme les expressions lambda, les flux (streams),
+la gestion des bases de données, etc.
 
-Continuer à pratiquer en écrivant des programmes, en explorant les bibliothèques Java, et en vous familiarisant avec les concepts de conception orientée objet vous aidera à devenir un développeur Java compétent.
+
+Voici les solutions en Java pour chaque exercice :
+
+### Exercice 1 : Affichage de paires de nombres
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 2; i <= 20; i += 2) {
+            System.out.println(i);
+        }
+    }
+}
+```
+
+### Exercice 2 : Somme des entiers avec `while`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int somme = 0;
+        int i = 1;
+
+        while (i <= 10) {
+            somme += i;
+            i++;
+        }
+
+        System.out.println("La somme des entiers de 1 à 10 est : " + somme);
+    }
+}
+```
+
+### Exercice 3 : Inverser un nombre avec `do-while`
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Entrez un nombre entier : ");
+        int nombre = scanner.nextInt();
+        int nombreInverse = 0;
+
+        do {
+            int chiffre = nombre % 10;
+            nombreInverse = nombreInverse * 10 + chiffre;
+            nombre /= 10;
+        } while (nombre > 0);
+
+        System.out.println("Le nombre inversé est : " + nombreInverse);
+
+        scanner.close();
+    }
+}
+```
+
+### Exercice 4 : Trouver le maximum d'une série d'entiers
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int max = Integer.MIN_VALUE;
+
+        System.out.println("Entrez 5 nombres entiers :");
+        for (int i = 0; i < 5; i++) {
+            int nombre = scanner.nextInt();
+            if (nombre > max) {
+                max = nombre;
+            }
+        }
+
+        System.out.println("Le plus grand nombre est : " + max);
+
+        scanner.close();
+    }
+}
+```
+
+### Exercice 5 : Compter les paires de chiffres dans un nombre
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Entrez un nombre entier : ");
+        int nombre = scanner.nextInt();
+        int countPaires = 0;
+
+        while (nombre > 0) {
+            int chiffre = nombre % 10;
+            if (chiffre % 2 == 0) {
+                countPaires++;
+            }
+            nombre /= 10;
+        }
+
+        System.out.println("Le nombre de chiffres paires est : " + countPaires);
+
+        scanner.close();
+    }
+}
+```
+
+Ces programmes utilisent les boucles `for`, `while` et `do-while` pour effectuer des tâches variées telles que l'affichage de nombres, la somme, l'inversion de nombres, la recherche du maximum et le comptage de chiffres pairs. Assurez-vous de tester ces programmes avec différentes entrées pour vérifier leur bon fonctionnement.
+
+
+
+
+
+ Voici des solutions en Java pour chacun des exercices :
+
+### Exercice 1 : Trier un tableau d'entiers
+
+```java
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] tableau = {5, 2, 9, 1, 5, 6};
+        
+        // Trier le tableau en ordre croissant
+        Arrays.sort(tableau);
+        
+        // Afficher le tableau trié
+        System.out.println("Tableau trié : " + Arrays.toString(tableau));
+    }
+}
+```
+
+### Exercice 2 : Filtrer les éléments paires d'un tableau
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] tableau = {1, 2, 3, 4, 5, 6};
+        
+        // Filtrer et afficher les éléments paires
+        System.out.print("Éléments paires : ");
+        for (int nombre : tableau) {
+            if (nombre % 2 == 0) {
+                System.out.print(nombre + " ");
+            }
+        }
+    }
+}
+```
+
+### Exercice 3 : Trouver le maximum et le minimum d'un tableau
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] tableau = {3, 5, 7, 2, 8};
+        
+        // Initialiser max et min avec la première valeur du tableau
+        int max = tableau[0];
+        int min = tableau[0];
+        
+        // Trouver le maximum et le minimum
+        for (int nombre : tableau) {
+            if (nombre > max) {
+                max = nombre;
+            }
+            if (nombre < min) {
+                min = nombre;
+            }
+        }
+        
+        // Afficher les résultats
+        System.out.println("Max: " + max);
+        System.out.println("Min: " + min);
+    }
+}
+```
+
+### Exercice 4 : Rechercher un élément dans un tableau trié
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] tableau = {1, 3, 5, 7, 9};
+        
+        // Demander à l'utilisateur d'entrer un nombre
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez un nombre à rechercher : ");
+        int nombreRecherche = scanner.nextInt();
+        
+        // Rechercher le nombre dans le tableau
+        int index = Arrays.binarySearch(tableau, nombreRecherche);
+        
+        // Afficher le résultat
+        if (index >= 0) {
+            System.out.println("Index : " + index);
+        } else {
+            System.out.println("Le nombre n'est pas présent dans le tableau.");
+        }
+        
+        scanner.close();
+    }
+}
+```
+
+### Exercice 5 : Supprimer les doublons d'un tableau
+
+```java
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] tableau = {1, 2, 2, 3, 4, 4, 5};
+        
+        // Utiliser un Set pour éliminer les doublons
+        Set<Integer> set = new HashSet<>();
+        for (int nombre : tableau) {
+            set.add(nombre);
+        }
+        
+        // Convertir le Set en tableau
+        Integer[] tableauSansDoublons = set.toArray(new Integer[0]);
+        
+        // Afficher le tableau sans doublons
+        System.out.println("Tableau sans doublons : " + Arrays.toString(tableauSansDoublons));
+    }
+}
+```
+
+Ces programmes couvrent des opérations courantes sur les tableaux en Java, y compris le tri, le filtrage, la recherche, et la suppression de doublons. Assurez-vous de tester ces programmes pour vérifier leur bon fonctionnement avec différentes entrées.
+
+
+
+
+Voici des solutions en Java pour chacun des exercices :
+
+### Exercice 1 : Méthode de Calcul de la Somme
+
+```java
+public class Main {
+    // Méthode pour calculer la somme de deux entiers
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        // Appel de la méthode avec différents paramètres et affichage des résultats
+        int result1 = sum(5, 7);
+        int result2 = sum(10, 15);
+        
+        System.out.println("La somme de 5 et 7 est : " + result1);
+        System.out.println("La somme de 10 et 15 est : " + result2);
+    }
+}
+```
+
+### Exercice 2 : Méthode de Vérification de Parité
+
+```java
+public class Main {
+    // Méthode pour vérifier si un nombre est pair
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        // Utilisation de la méthode pour vérifier plusieurs nombres
+        System.out.println("4 est pair : " + isEven(4));
+        System.out.println("7 est pair : " + isEven(7));
+        System.out.println("10 est pair : " + isEven(10));
+        System.out.println("13 est pair : " + isEven(13));
+    }
+}
+```
+
+### Exercice 3 : Méthode de Calcul de la Factorielle
+
+```java
+public class Main {
+    // Méthode pour calculer la factorielle d'un nombre entier positif
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // Test de la méthode avec différents nombres
+        int result1 = factorial(5);
+        int result2 = factorial(7);
+        
+        System.out.println("La factorielle de 5 est : " + result1);
+        System.out.println("La factorielle de 7 est : " + result2);
+    }
+}
+```
+
+### Exercice 4 : Méthode de Surcharge
+
+```java
+public class Calculator {
+    // Méthode pour multiplier deux entiers
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    // Méthode surchargée pour multiplier deux nombres à virgule flottante
+    public static double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public static void main(String[] args) {
+        // Test des méthodes de multiplication
+        int result1 = multiply(3, 4);
+        double result2 = multiply(3.5, 4.2);
+        
+        System.out.println("Le produit de 3 et 4 est : " + result1);
+        System.out.println("Le produit de 3.5 et 4.2 est : " + result2);
+    }
+}
+```
+
+### Exercice 5 : Méthode de Manipulation de Chaînes
+
+```java
+public class Main {
+    // Méthode pour inverser une chaîne de caractères
+    public static String reverseString(String str) {
+        StringBuilder reversed = new StringBuilder(str);
+        return reversed.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        // Utilisation de la méthode pour inverser plusieurs chaînes
+        String result1 = reverseString("hello");
+        String result2 = reverseString("world");
+        
+        System.out.println("Chaîne inversée de 'hello' : " + result1);
+        System.out.println("Chaîne inversée de 'world' : " + result2);
+    }
+}
+```
+
+Ces programmes en Java démontrent différentes fonctionnalités telles que les méthodes de calcul, la vérification de la parité, le calcul de la factorielle, la surcharge de méthodes et la manipulation de chaînes. Assurez-vous de tester ces programmes pour vérifier leur bon fonctionnement avec différentes entrées.
+
